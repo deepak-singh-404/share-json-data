@@ -20,7 +20,7 @@ const getData = async (req, res) => {
         if (!doc) {
             return res.status(404).json({ success: false, message: "Not Found" })
         }
-        return res.status(200).json({ success: false, message: "Here is your data", response: doc })
+        return res.status(200).json({data: doc.data })
     }
     catch (error) {
         return res.status(500).json({ success: false, message: "Internal Server Error", response: error.message })
