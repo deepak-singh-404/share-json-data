@@ -2,9 +2,7 @@ const Document = require('../model/document')
 
 const addData = async (req, res) => {
     try {
-        const doc = await new Document({
-            data: req.body
-        })
+        const doc = await new Document(req.body)
         await doc.save()
         return res.status(201).json({ success: true, response: `https://sharejsondata.herokuapp.com/${doc._id}` })
     }
