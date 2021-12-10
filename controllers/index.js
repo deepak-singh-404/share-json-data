@@ -6,7 +6,7 @@ const addData = async (req, res) => {
             data: req.body
         })
         await doc.save()
-        return res.status(201).json({ success: true, message: "Date Saved Successfully", response: doc._id })
+        return res.status(201).json({ success: true, message: "Date Saved Successfully", response: `https://sharejsondata.herokuapp.com/${doc._id}` })
     }
     catch (error) {
         return res.status(500).json({ success: false, message: "Internal Server Error", response: error.message })
@@ -20,7 +20,7 @@ const getData = async (req, res) => {
         if (!doc) {
             return res.status(404).json({ success: false, message: "Not Found" })
         }
-        return res.status(200).json({ success: false, message: "Here is your data", response: data })
+        return res.status(200).json({ success: false, message: "Here is your data", response: doc })
     }
     catch (error) {
         return res.status(500).json({ success: false, message: "Internal Server Error", response: error.message })
